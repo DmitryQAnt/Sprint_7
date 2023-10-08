@@ -8,21 +8,21 @@ public class LoginCourierSuccessfulTest {
     private final CourierClient client = new CourierClient();
     private final Assertions check = new Assertions();
     private Courier courier;
-    private  int courierId;
-
+    private int courierId;
 
     @Test
     @DisplayName("Check to login new courier  with valid credentials")
     @Description("Successful login test for /api/v1/courier/login endpoint")
     public void checkCreateNewCourierWithUniqueData() {
         courier = CourierGenerator.random();
-        client.create(courier);
-        ValidatableResponse loginResponse = client.login(Credentials.from(courier));
+        CourierClient.create(courier);
+        ValidatableResponse loginResponse = CourierClient.login(Credentials.from(courier));
         courierId = client.getLoggedInCourierId(loginResponse);
         check.loggedInSuccesfuly(loginResponse);
     }
+
     @After
-    public void deleteCourier(){
+    public void deleteCourier() {
         client.delete(courierId);
     }
 

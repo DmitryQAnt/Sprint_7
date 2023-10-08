@@ -17,16 +17,17 @@ public class LoginCourierNotValidCredentialsFailTest {
     public void checkCourierLoginWithWrongPassword() {
         courierBasic = CourierGenerator.CourierBasic();
         courierWithWrongPassword = CourierGenerator.CourierWrongPassword();
-        client.create(courierBasic);
+        CourierClient.create(courierBasic);
         Credentials basics = Credentials.from(courierBasic);
-        ValidatableResponse basicLoginResponse = client.login(basics);
+        ValidatableResponse basicLoginResponse = CourierClient.login(basics);
         courierId = client.getLoggedInCourierId(basicLoginResponse);
         Credentials credsWrong = Credentials.from(courierWithWrongPassword);
-        ValidatableResponse loginResponse2 = client.login(credsWrong);
+        ValidatableResponse loginResponse2 = CourierClient.login(credsWrong);
         check.impossibleRegistrationCourierWithWrongLogin(loginResponse2);
     }
+
     @After
-    public void deleteCourier(){
+    public void deleteCourier() {
         client.delete(courierId);
     }
 

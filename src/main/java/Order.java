@@ -8,6 +8,7 @@ public class Order {
     private String deliveryDate;
     private String comment;
     private String[] color;
+
     public Order(String firstName, String lastName, String address, String metroStation, String phone, String rentTime, String deliveryDate, String comment, String[] color) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -21,6 +22,8 @@ public class Order {
     }
 
 
+    public Order() {
+    }
 
     public String getFirstName() {
         return firstName;
@@ -92,8 +95,5 @@ public class Order {
 
     public void setColor(String[] color) {
         this.color = color;
-    }
-
-    public Order() {
     }
 }

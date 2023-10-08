@@ -9,21 +9,21 @@ public class CreateCourierSuccessfulTest {
     private final Assertions check = new Assertions();
     private Courier courier;
 
-
     @Test
     @DisplayName("Check to create new courier with valid data")
     @Description("Basic test for /api/v1/courier endpoint")
     public void checkCreateNewCourier() {
         courier = CourierGenerator.random();
-        ValidatableResponse response = client.create(courier);
+        ValidatableResponse response = CourierClient.create(courier);
         check.assertCreatedSuccess(response);
 
 
     }
+
     @After
-    public void deleteCourier(){
+    public void deleteCourier() {
         Credentials creds = Credentials.from(courier);
-        ValidatableResponse response = client.login(creds);
+        ValidatableResponse response = CourierClient.login(creds);
         client.delete(client.getLoggedInCourierId(response));
     }
 

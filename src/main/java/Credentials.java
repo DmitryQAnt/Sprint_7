@@ -6,9 +6,11 @@ public class Credentials {
         this.login = login;
         this.password = password;
     }
+
     public Credentials() {
     }
-    public static Credentials from (Courier courier) {
+
+    public static Credentials from(Courier courier) {
         return new Credentials(courier.getLogin(), courier.getPassword());
     }
 

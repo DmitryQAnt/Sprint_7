@@ -7,7 +7,6 @@ public class OrderListNotNullTest {
     private final Order order = new Order();
     private final Assertions check = new Assertions();
 
-
     @Test
     @DisplayName("Check full order list request return ")
     @Description("Positive test for /api/v1/orders endpoint")

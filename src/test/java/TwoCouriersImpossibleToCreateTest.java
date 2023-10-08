@@ -7,27 +7,24 @@ import org.junit.Test;
 public class TwoCouriersImpossibleToCreateTest {
     private final CourierClient client = new CourierClient();
     private final Assertions check = new Assertions();
-    protected int courierId;
     private Courier courier;
-
-
 
     @Test
     @DisplayName("Check impossible to create two similar couriers")
     @Description("Negative test for /api/v1/courier endpoint")
     public void checkCreateTwoSimilarCouriers() {
         courier = CourierGenerator.random();
-        ValidatableResponse courierCreation = client.create(courier);
-        ValidatableResponse courierSameData = client.create(courier);
+        ValidatableResponse courierCreation = CourierClient.create(courier);
+        ValidatableResponse courierSameData = CourierClient.create(courier);
         check.impossibleToRegistrateTwoSimilarCouriers(courierSameData);
     }
 
     @After
-    public void deleteCourier(){
+    public void deleteCourier() {
         Credentials creds = Credentials.from(courier);
-        ValidatableResponse response = client.login(creds);
+        ValidatableResponse response = CourierClient.login(creds);
         client.delete(client.getLoggedInCourierId(response));
     }
-    }
+}
 
 

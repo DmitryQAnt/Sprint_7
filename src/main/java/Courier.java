@@ -1,6 +1,5 @@
 public class Courier {
 
-
     private String login;
     private String password;
     private String firstName;
@@ -10,8 +9,10 @@ public class Courier {
         this.password = password;
         this.firstName = firstName;
     }
+
     public Courier() {
     }
+
     public String getLogin() {
         return login;
     }

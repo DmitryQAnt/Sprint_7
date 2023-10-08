@@ -15,7 +15,7 @@ public class LoginCourierWithoutFieldsFailTest {
     public void checkCourierLoginWithoutLogin() {
         courierWithoutLogin = CourierGenerator.courierWithoutLogin();
         Credentials basics = Credentials.from(courierWithoutLogin);
-        ValidatableResponse response = client.login(basics);
+        ValidatableResponse response = CourierClient.login(basics);
         check.impossibleCourierLoginWithoutLoginField(response);
     }
 
